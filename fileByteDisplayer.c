@@ -6,14 +6,14 @@ int main(int argc, char **argv)
 
     FILE* file = fopen(argv[1], "rb");
 
-    int bytesToRead = -1;
+    int linesToRead = -1;
     if (argc == 3) {
-        bytesToRead = atoi(argv[2]);
+        linesToRead = atoi(argv[2]);
     }
 
     int linesRead = 0;
 
-    while(!feof(file) && (bytesToRead <= 0 || linesRead < (bytesToRead / 16)))
+    while(!feof(file) && (linesToRead <= 0 || linesRead < linesToRead))
     {
         int cutOffVal = 16;
         for(int i = 0; i < 16; i++)
