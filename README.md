@@ -5,7 +5,7 @@ A small C program to display byte information of any file.
 1. Compile the code
 2. In terminal write the following command:
 ```
-fileBitDisplayer.exe <filePath>
+fileByteDisplayer.exe <filePath>
 ```
 ### Explanation
 <filePath> – a path to the file the bytes of which are to be displayed
