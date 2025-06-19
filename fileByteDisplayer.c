@@ -4,13 +4,15 @@
 
 int main(int argc, char **argv)
 {
-    unsigned char bytes[16];
 
     FILE* file = fopen(argv[1], "rb");
 
     int linesToRead = -1;
     int linesToSkip = 0;
     int endLine = -1;
+    int lineSize = 16;
+
+    unsigned char bytes[lineSize];
 
     for (int i = 2; i < argc; i++) {
         if (strcmp(argv[i], "-s") == 0 && i + 1 < argc)
@@ -19,6 +21,8 @@ int main(int argc, char **argv)
             endLine = atoi(argv[i + 1]);
         else if (strcmp(argv[i], "-c") == 0 && i + 1 < argc)
             linesToRead = atoi(argv[i + 1]);
+        else if (strcmp(argv[i], "-l") == 0 && i + 1 < argc)
+            lineSize = atoi(argv[i + 1]);
         else{
             printf("ERROR: Unrecognized argument: %s\n", argv[i]);
             continue;
@@ -33,7 +37,7 @@ int main(int argc, char **argv)
             linesToRead = endLine - linesToSkip + 1;
     }
 
-    fseek(file, linesToSkip * 16, SEEK_SET);
+    fseek(file, linesToSkip * lineSize, SEEK_SET);
 
     int linesRead = 0;
 
@@ -41,8 +45,8 @@ int main(int argc, char **argv)
     {
         printf("%3d. ", linesRead + linesToSkip);
 
-        int cutOffVal = 16;
-        for(int i = 0; i < 16; i++)
+        int cutOffVal = lineSize;
+        for(int i = 0; i < lineSize; i++)
         {
             fscanf(file, "%c", &bytes[i]);
             if(feof(file))
