@@ -14,5 +14,6 @@ fileBitDisplayer.exe <filePath>
 -s <startLineNumber> - specify the first line to be displayed (all the previous bytes will be skipped).
 -e <endLineNumber> - specify the last line number to be displayed (all the following bytes will be skipped).
 -c <lineCountNumber> - specify the maximum number of lines to be displayed.
+-l <numberOfBytesInLine> - specify the maximum number of bytes displayed in a line. Default is 16.
 
-NOTE: all the bytes are displayed in lines each consisting of 16 bytes (although the last line may have fewer bytes).
+NOTE: the last line may have fewer bytes than specified.
