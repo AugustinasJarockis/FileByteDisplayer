@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 
         for(int i = 0; i < cutOffVal; i++)
         {
-            if(bytes[i] == 10 || bytes[i] == 11 || bytes[i] == 13)
+            if((bytes[i] < 32 && bytes[i] != 26) || bytes[i] == 127)
             {
                 printf("~");
             }
